@@ -33,7 +33,7 @@ func updateFirefoxURL(url string) error {
 		checkCmd := exec.Command("pgrep", "firefox")
 		if err := checkCmd.Run(); err != nil {
 			// Firefox is not running, start it with the URL
-			cmd = exec.Command("firefox", url)
+			cmd = exec.Command("firefox", "--kiosk", url)
 		} else {
 			// Firefox is running, use xdotool to focus Firefox and simulate keystrokes
 			// This approach is more reliable than --remote for modern Firefox
